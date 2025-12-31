@@ -1,50 +1,31 @@
 import requests
 
-def main():
-    print()
-    print('==> CONSULTAR CEP <=='.center(35)) 
-    #Input CEP
-    while True:
-        cep = input('CEP (DIGITE 8 DIGITOS, SOMENTE NÚMERO): ')
-        if len(cep) != 8:
-            print('Quantidade de digitos inválida, tente novamente!')
-        else:
-            break 
-    #Link da Api com o cep
-    link = link = f'https://viacep.com.br/ws/{cep}/json/'
-    #Requisição do cep
-    requisicao = requests.get(link)
-    endereço = requisicao.json()
+def consultar_cep(cep: str) -> dict:
+    """
+    Recebe um CEP (string com 8 dígitos) e retorna um dicionário
+    com os dados do endereço ou uma mensagem de erro.
+    """
 
-    #Dados
-    if 'erro' not in endereço:
-        cep = endereço['cep']
-        logradouro = endereço['logradouro']
-        complemento = endereço['complemento']
-        uf = endereço['uf']
-        bairro = endereço['bairro']
-        cidade = endereço['localidade']
-        
-        #Print dos resultados
-        print('\033[1;32m==> CEP ENCONTRADO <==\033[m')
-        print(f'\033[1mCEP:\033[m {cep}')
-        print(f'\033[1mLogadouro:\033[m {logradouro}')
-        print(f'\033[1mComplemento:\033[m {complemento}')
-        print(f'\033[1mUf:\033[m {uf}')
-        print(f'\033[1mBairro:\033[m {bairro}')
-        print(f'\033[1mCidade:\033[m {cidade}')
+    # Validação básica
+    if not cep or not cep.isdigit() or len(cep) != 8:
+        return {"erro": "CEP inválido. Deve conter 8 dígitos numéricos."}
 
+    url = f"https://viacep.com.br/ws/{cep}/json/"
+    resposta = requests.get(url)
 
+    if resposta.status_code != 200:
+        return {"erro": "Erro ao acessar a API do ViaCEP."}
 
-    else:
-        print()
-        print('CEP inválido')
-    print()
-    nova_consulta = int(input('\033[1;31mFazer nova consulta?\033[m\n1 - Sim\n2 - Nâo\nEscolha: '))
+    dados = resposta.json()
 
-    if nova_consulta == 1:
-        main()
-    elif nova_consulta == 2:
-        print('\033[1;31m==> FIM DO PROGRAMA <==\033[m')
+    if "erro" in dados:
+        return {"erro": "CEP não encontrado."}
 
-main()
+    return {
+        "cep": dados.get("cep"),
+        "logradouro": dados.get("logradouro"),
+        "complemento": dados.get("complemento"),
+        "bairro": dados.get("bairro"),
+        "cidade": dados.get("localidade"),
+        "uf": dados.get("uf")
+    }
