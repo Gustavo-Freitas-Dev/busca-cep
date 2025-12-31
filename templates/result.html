@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado do CEP</title>
+</head>
+<body>
+    <h2>Endereço encontrado</h2>
+
+    <ul>
+        <li><strong>CEP:</strong> {{ endereco.cep }}</li>
+        <li><strong>Logradouro:</strong> {{ endereco.logradouro or 'Não informado' }}</li>
+        <li><strong>Bairro:</strong> {{ endereco.bairro or 'Não informado' }}</li>
+        <li><strong>Cidade:</strong> {{ endereco.localidade }}</li>
+        <li><strong>UF:</strong> {{ endereco.uf }}</li>
+    </ul>
+
+    <a href="/">Buscar outro CEP</a>
+</body>
+
+</html>

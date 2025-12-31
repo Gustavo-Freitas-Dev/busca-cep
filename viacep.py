@@ -21,11 +21,4 @@ def consultar_cep(cep: str) -> dict:
     if "erro" in dados:
         return {"erro": "CEP não encontrado."}
 
-    return {
-        "cep": dados.get("cep"),
-        "logradouro": dados.get("logradouro"),
-        "complemento": dados.get("complemento"),
-        "bairro": dados.get("bairro"),
-        "cidade": dados.get("localidade"),
-        "uf": dados.get("uf")
-    }
+    return dados

@@ -10,13 +10,16 @@ def input_cep():
 @app.route("/result", methods=["POST"])
 def result():
     cep = request.form.get("cep")
+
+    if not cep:
+        return "CEP não informado", 400
+
     resultado = consultar_cep(cep)
 
     if "erro" in resultado:
         return resultado["erro"], 400
 
-    return resultado  # ou render_template(...)
-
+    return render_template("result.html", endereco=resultado)
 
 if __name__ == '__main__':
     app.run(debug=True)
