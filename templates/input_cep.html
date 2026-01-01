@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Consultar CEP</title>
+
+    <!-- ESSENCIAL PARA RESPONSIVIDADE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-    <h2>Consultar CEP</h2>
-
     <form action="/result" method="post">
+        <h2>Consultar CEP</h2>
+
         <label>
-            CEP:
+            CEP
             <input type="text" name="cep" maxlength="8" inputmode="numeric" pattern="[0-9]{8}" required>
         </label>
-        <br><br>
+
         <button type="submit">Consultar</button>
     </form>
 

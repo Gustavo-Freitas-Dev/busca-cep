@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f6f8;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+form {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* TÍTULO */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* LABEL */
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: #555;
+}
+
+/* INPUT */
+input {
+    margin-top: 8px;
+    padding: 12px;
+    font-size: 16px; /* evita zoom no iOS */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+/* BOTÃO */
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+/* 📱 TELAS MUITO PEQUENAS */
+@media (max-width: 360px) {
+    form {
+        padding: 18px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* 🖥️ TELAS MAIORES */
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+    }
+
+    form {
+        max-width: 420px;
+    }
+}
+
+
+/* CARD reutilizável */
+.card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* LISTA DE RESULTADOS */
+.result-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.result-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+.result-list li:last-child {
+    border-bottom: none;
+}
+
+/* LINK DE VOLTAR */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* 📱 TELAS PEQUENAS */
+@media (max-width: 360px) {
+    .card {
+        padding: 18px;
+    }
+
+    .result-list li {
+        font-size: 14px;
+    }
+}
