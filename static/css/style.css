@@ -174,14 +174,23 @@ button:hover {
 
 
 
-/* RESPONSIVO */
-@media (max-width: 360px) {
+@media (max-width: 480px) {
     .card {
-        padding: 20px;
+        padding-top: 20px;
     }
 
-    .item {
-        font-size: 14px;
+    .card h2 {
+        font-size: 18px;
+        padding-right: 0px; /* mantém alinhado */
+    }
+
+    .copy-btn {
+        padding-right: 80px;
+        padding-bottom: 36px;
+        font-size: 16px;
+        opacity: 0.9;
     }
 }
+
+
 
